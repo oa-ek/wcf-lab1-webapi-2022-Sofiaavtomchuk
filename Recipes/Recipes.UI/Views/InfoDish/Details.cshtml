@@ -1,0 +1,195 @@
+﻿@using Recipes.Core
+@using Recipes.Repos
+@model Recipes.Repos.Dto.InfoDishCreateDto
+<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="stylesheet" href="style.css">
+ 
+   
+
+<link rel="icon" href="img/core-img/favicon.ico">
+<link rel="stylesheet" href="style.css">
+<body>
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcumb-text text-center">
+                        <h2>Рецепт приготування</h2>
+                    </div>
+                </div>
+            </div>
+            <br />
+    <img width="1024" height="683" src="https://post.healthline.com/wp-content/uploads/2020/12/healthy-eating-food-diet-ingredients-1024x628-facebook.jpg" class="attachment-large size-large wp-post-image" alt="фото" loading="lazy" itemprop="image" srcset="https://post.healthline.com/wp-content/uploads/2020/12/healthy-eating-food-diet-ingredients-1200x628-facebook.jpg 1024w,https://post.healthline.com/wp-content/uploads/2020/12/healthy-eating-food-diet-ingredients-300x200-facebook.jpg 300w, https://post.healthline.com/wp-content/uploads/2020/12/healthy-eating-food-diet-ingredients-768x512-facebook.jpg 768w, https://post.healthline.com/wp-content/uploads/2020/12/healthy-eating-food-diet-ingredients-1200x628-facebook.jpg 1080w" sizes="(max-width: 1024px) 100vw, 1024px">
+
+<!-- Receipe Content Area -->
+        <div class="receipe-content-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-md-8">
+                        <div class="receipe-headline my-5">
+                            <h2> <class = "col-sm-10">
+                                @Html.DisplayFor(model => model.Title)
+                            </h2>
+                            <div class="receipe-duration">
+                                <h6>Час приготування:  <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.CookingTime)
+                                                       </dd>  
+                                </h6>
+                                <h6>Складність: <dd class = "col-sm-10">
+                                    @Html.DisplayFor(model => model.Difficulty)
+                                                </dd>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <div class="receipe-ratings text-right my-5">
+                            <div class="ratings">
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star" aria-hidden="true"></i>
+                                <i class="fa fa-star-o" aria-hidden="true"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex">
+                            <h4>01.</h4>
+                            <p> 
+                                @Html.DisplayFor(model => model.Preparation1)
+                            </p>
+                        </div>
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex">
+                            <h4>02.</h4>
+                        <p>
+                            @Html.DisplayFor(model => model.Preparation2)
+                        </p>
+                            </div>
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex">
+                            <h4>03.</h4>
+                            <p>
+                                @Html.DisplayFor(model => model.Preparation3)
+                            </p>
+                        </div>
+                        <!-- Single Preparation Step -->
+                        <div class="single-preparation-step d-flex">
+                            <h4>04.</h4>
+                            <p>
+                                @Html.DisplayFor(model => model.Preparation4)
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Ingredients -->
+                    <div class="col-12 col-lg-4">
+                        <div class="ingredients">
+                            <h4>Інгредієнти</h4>
+
+                            <!-- Custom Checkbox -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck2">
+                                <label class="custom-control-label" for="customCheck2"> @Html.DisplayFor(model => model.Ingredients1)</label>
+                            </div>
+
+                            <!-- Custom Checkbox -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck3">
+                            <label class="custom-control-label" for="customCheck3">@Html.DisplayFor(model => model.Ingredients2)</label>
+                            </div>
+
+                            <!-- Custom Checkbox -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck4">
+                            <label class="custom-control-label" for="customCheck4">@Html.DisplayFor(model => model.Ingredients3)</label>
+                            </div>
+
+                            <!-- Custom Checkbox -->
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="customCheck5">
+                            <label class="custom-control-label" for="customCheck5">@Html.DisplayFor(model => model.Ingredients4)</label>
+                            </div>
+                        <!-- Custom Checkbox -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck2">
+                            <label class="custom-control-label" for="customCheck2"> @Html.DisplayFor(model => model.Ingredients5)</label>
+                        </div>
+
+                        <!-- Custom Checkbox -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck3">
+                            <label class="custom-control-label" for="customCheck3">@Html.DisplayFor(model => model.Ingredients6)</label>
+                        </div>
+
+                        <!-- Custom Checkbox -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck4">
+                            <label class="custom-control-label" for="customCheck4">@Html.DisplayFor(model => model.Ingredients7)</label>
+                        </div>
+
+                        <!-- Custom Checkbox -->
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck5">
+                            <label class="custom-control-label" for="customCheck5">@Html.DisplayFor(model => model.Ingredients8)</label>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+    <!-- ##### Footer Area Start ##### -->
+    <footer class="footer-area">
+        <div class="container h-100">
+            <div class="row h-100">
+                <div class="col-12 h-100 d-flex flex-wrap align-items-center justify-content-between">
+                    <!-- Footer Social Info -->
+                    <div class="footer-social-info text-right">
+                        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-dribbble" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-behance" aria-hidden="true"></i></a>
+                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                    </div>
+                    <!-- Footer Logo -->
+                    <div class="footer-logo">
+                        <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area Start ##### -->
+
+    <!-- ##### All Javascript Files ##### -->
+   <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        $(function () {
+            $(".form-select").select2();
+        });
+    </script>
+}

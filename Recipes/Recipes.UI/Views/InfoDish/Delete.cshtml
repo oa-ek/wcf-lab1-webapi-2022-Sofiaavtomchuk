@@ -1,0 +1,20 @@
+﻿@using Recipes.Repos.Dto
+
+@model InfoDishCreateDto
+
+@{
+}
+
+
+<h1>Підтвердіть видалення рецепту?</h1>
+<hr />
+
+<p>@Model.Title</p>
+
+<hr />
+<form asp-action="ConfirmDelete" class="col-md-4">
+    @Html.AntiForgeryToken()
+    <input asp-for="Id" type="hidden" />
+    <button type="submit" class="btn btn-warning">Видалити рецепт!!!</button>
+    <a href="/InfoDish" class="btn btn-outline-dark">Повернутися до списку / Відмінити</a>
+</form>
