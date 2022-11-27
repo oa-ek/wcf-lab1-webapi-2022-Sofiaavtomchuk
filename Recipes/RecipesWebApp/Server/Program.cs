@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.ResponseCompression;
+using Recipes.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+builder.Services.AddSwaggerGen();
+
+
+//builder.Services.AddScoped<InfoDishRepository>();
+//builder.Services.AddScoped<CategoryRepository>();
 
 var app = builder.Build();
 
@@ -13,6 +19,8 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
