@@ -39,9 +39,9 @@ namespace RecipesWebApp.Server.Controllers
             return View();
         }
 
-        // GET: Accommodation/Create
-        [NonAction]
-        [AutoValidateAntiforgeryToken]
+        [HttpPost, ActionName("Create")]
+        [ValidateAntiForgeryToken]
+        [Route("Create")]
         public async Task<IActionResult> Create(InfoDishCreateDto infoDishCreateDto, string categories)
         {
             ViewBag.Categories = categoryRepository.GetCategories();
@@ -83,8 +83,7 @@ namespace RecipesWebApp.Server.Controllers
         }
 
         // Post: Accommodation/Edit
-        [HttpGet]
-        [Route("Edit")]
+        [NonAction]
         public async Task<IActionResult> Edit(int id)
         {
             ViewBag.Categories = categoryRepository.GetCategories();
@@ -92,8 +91,9 @@ namespace RecipesWebApp.Server.Controllers
         }
 
         // POST: Accommodation/Edit
-        [NonAction]
-        //[ValidateAntiForgeryToken]
+        [HttpGet]
+        [Route("Edit")]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(InfoDishCreateDto model, string categories)
         {
             if (ModelState.IsValid)
@@ -131,7 +131,8 @@ namespace RecipesWebApp.Server.Controllers
             return View(info);
         }
 
-        [NonAction]
+        // Post: Accommodation/Search
+        [HttpPost, ActionName("Search")]
         public async Task<IActionResult> Search(string title, string difficulty, string cookingTime)
         {
             HttpClient client = new();
