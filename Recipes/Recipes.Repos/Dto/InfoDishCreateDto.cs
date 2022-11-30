@@ -33,7 +33,7 @@ namespace Recipes.Repos.Dto
         public string? Preparation3 { get; set; }
         public string? Preparation4 { get; set; }
 
-        public Category? Categories { get; set; }
+        public string? Categories { get; set; }
 
     }
 }

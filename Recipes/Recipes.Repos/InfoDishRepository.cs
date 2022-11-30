@@ -91,7 +91,7 @@ namespace Recipes.Repos
                 Preparation2 = i.Preparation2,
                 Preparation3 = i.Preparation3,
                 Preparation4 = i.Preparation4,
-                Categories = i.Categories,
+                Categories = i.Categories.NameCategory,
             };
             return infoDishDto;
         }
@@ -129,7 +129,7 @@ namespace Recipes.Repos
                 infoDish.Preparation3 = model.Preparation3;
             if (infoDish.Preparation4 != model.Preparation4)
                 infoDish.Preparation4 = model.Preparation4;
-            if (infoDish.Categories != model.Categories)
+            if (infoDish.Categories.NameCategory != model.Categories)
                 infoDish.Categories = _ctx.Categories.FirstOrDefault(x => x.NameCategory == categories);
             _ctx.SaveChanges();
         }
@@ -159,7 +159,7 @@ namespace Recipes.Repos
                     Preparation2 = infoDish.Preparation2,
                     Preparation3 = infoDish.Preparation3,
                     Preparation4 = infoDish.Preparation4,
-                    Categories = infoDish.Categories,
+                    Categories = infoDish.Categories.NameCategory,
                 };
                 return Details;
             }
