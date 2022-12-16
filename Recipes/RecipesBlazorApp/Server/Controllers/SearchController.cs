@@ -15,6 +15,9 @@ namespace RecipesWebApp.Server.Controllers
             _context = context;
         }
 
+        /// <summary>
+        /// Method search needed dishes by search string in db and returns the list of them
+        /// </summary>
         // GET: api/<SearchController>
         [HttpGet("{title}/{difficulty}/{cookingTime}")]
         public async Task<IEnumerable<InfoDish>> Get(string title, string difficulty, string cookingTime)

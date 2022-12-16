@@ -24,14 +24,23 @@ namespace RecipesWebApp.Server.Controllers
 
         }
 
+        /// <summary>
+        /// Method returnes list of dishes from database
+        /// </summary>
+        /// 
         [HttpGet]
         public List<InfoDish>? GetInfoDish()
         {
             var infoDish = infoDishRepository.GetInfoDishes();
+            //var category = categoryRepository.GetCategory();
             return infoDish;
 
         }
 
+        /// <summary>
+        /// Method creates dish and adds it to db
+        /// </summary>
+        /// <param name="categories">gives the name of category, which we need to create dish</param>
         [HttpPost]
         public async Task Create(InfoDishCreateDto infoDishCreateDto, string categories)
         {
@@ -64,30 +73,41 @@ namespace RecipesWebApp.Server.Controllers
             });
         }
 
-
-        [HttpPost]
-        [Route("Edit")]
+        /// <summary>
+        /// Method edits dish from database
+        /// </summary>
+        /// <param name="categories"> name of category, which we need to edit</param>
+        [HttpPut("{id}/edit")]
         public async Task Edit(InfoDishCreateDto model, string categories)
         {
             await infoDishRepository.UpdateAsync(model, categories);
         }
 
-        [HttpPost]
-        [Route("Delete/{id}")]
+        /// <summary>
+        /// Method deletes dish from db by id
+        /// </summary>
+        /// <param name="id">id of deleting dish</param>
+        [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
             await infoDishRepository.DeleteInfoDishAsync(id);
         }
 
-        [HttpPost]
-        [Route("Details")]
+        /// <summary>
+        /// Method details dish from db by id
+        /// </summary>
+        /// <param name="id">id for opening details dish</param>
+        [HttpGet("{id}/details")]
         public async Task<InfoDishCreateDto> Details(int id)
         {
             var info = await infoDishRepository.GetInfoDishDto(id);
             return info;
         }
 
-        [HttpPost]
+        /// <summary>
+        /// Method search needed dishes by search string in db and returns the list of them
+        /// </summary>
+        [HttpGet]
         [Route("Search")]
         public async Task<IActionResult> Search(string title, string difficulty, string cookingTime)
         {

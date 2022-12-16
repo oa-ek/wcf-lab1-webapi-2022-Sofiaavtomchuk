@@ -66,8 +66,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddSwaggerGen();
 
 
-//builder.Services.AddScoped<InfoDishRepository>();
-//builder.Services.AddScoped<CategoryRepository>();
+builder.Services.AddScoped<InfoDishRepository>();
+builder.Services.AddScoped<CategoryRepository>();
 
 var app = builder.Build();
 

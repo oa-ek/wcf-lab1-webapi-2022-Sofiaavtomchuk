@@ -33,7 +33,7 @@ namespace Recipes.Repos
             return _ctx.Categories.FirstOrDefault(x => x.NameCategory == name);
         }
 
-        public List<Category> GetCategories()
+        public List<Category> GetCategories(int id)
         {
             var categoryList = _ctx.Categories.ToList();
             return categoryList;
@@ -50,6 +50,11 @@ namespace Recipes.Repos
             var category = _ctx.Categories.FirstOrDefault(x => x.Id == updatedCategory.Id);
             category.NameCategory = updatedCategory.NameCategory;
             await _ctx.SaveChangesAsync();
+        }
+
+        public InfoDish GetInfoDish(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

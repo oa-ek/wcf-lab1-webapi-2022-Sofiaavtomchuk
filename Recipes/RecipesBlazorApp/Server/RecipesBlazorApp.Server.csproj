@@ -20,5 +20,9 @@
     <ProjectReference Include="..\Shared\RecipesBlazorApp.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\InfoDish\" />
+  </ItemGroup>
+
 
 </Project>

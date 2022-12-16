@@ -30,8 +30,7 @@ namespace RecipesWebApp.Server.Controllers
             //return View("Index");
         }
 
-        [HttpGet]
-        [Route("Delete")]
+        [HttpDelete("{id}")]
         public async Task  Delete(int id)
         {
             var save = saveRepository.GetSave(id);
