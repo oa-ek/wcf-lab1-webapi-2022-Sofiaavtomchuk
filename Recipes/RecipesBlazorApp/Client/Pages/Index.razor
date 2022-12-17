@@ -1,9 +1,46 @@
-﻿@page "/"
+﻿@page "/InfoDish/index"
+@inject HttpClient Http
+@using RecipesBlazorApp.Shared.Dtos.InfoDish;
+<div class="">
+    <a class="btn btn-sm btn-outline-danger" href="/dish/new">Додати рецепт</a>
+</div>
+<br />
+    <h3>Рецепти страв</h3>
 
-<PageTitle>Index</PageTitle>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
 
-<h1>Hello, world!</h1>
+        </tr>
+    </thead>
+	<tbody>
+        @foreach (var item in infoDish)
+        {
+            <tr>
+            <td><img class="rounded" src="@item.IconPath" alt="@item.IconPath" style="max-height:100px;"></td>
+                        <td>@item.Title</td>
+                       <td>
+                    
+                        <a class="btn btn-sm btn-outline-secondary" href="/dish/edit/@item.Id">
+						<i class="oi oi-pencil"></i>
+					</a>
+                    <a class="btn btn-sm btn-outline-danger" href="/dish/delete/@item.Id">
+                        <i class="oi oi-delete"></i>
+                    </a>
+                    
+				</td>
+        </tr>
+        }
+        </tbody>
+        </table>
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    List<InfoDishDto> infoDish = new List<InfoDishDto>();
+    protected override async Task OnInitializedAsync()
+    {
+        infoDish = await Http.GetFromJsonAsync<List<InfoDishDto>>("api/InfoDish");
+    }
+}

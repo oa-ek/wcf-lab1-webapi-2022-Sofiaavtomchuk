@@ -6,6 +6,7 @@ using Recipes.Repos;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using RecipesBlazorApp.Shared.Dtos.InfoDish;
 
 namespace RecipesWebApp.Server.Controllers
 {
@@ -29,9 +30,10 @@ namespace RecipesWebApp.Server.Controllers
         /// </summary>
         /// 
         [HttpGet]
-        public List<InfoDish>? GetInfoDish()
+        public List<InfoDishDto> GetInfoDishesDto()
         {
-            var infoDish = infoDishRepository.GetInfoDishes();
+            var infoDish = infoDishRepository.GetInfoDishesDto();
+
             //var category = categoryRepository.GetCategory();
             return infoDish;
 
@@ -47,7 +49,7 @@ namespace RecipesWebApp.Server.Controllers
             var category = categoryRepository.GetCategoryByName(categories);
             if (category == null)
             {
-                category = new Category() { NameCategory = categories };
+                category = new Recipes.Core.Category() { NameCategory = categories };
                 category = await categoryRepository.AddCategoryAsync(category);
             }
 

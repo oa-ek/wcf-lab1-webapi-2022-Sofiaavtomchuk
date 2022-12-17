@@ -1,0 +1,167 @@
+﻿@page "/dish/edit/{id:int}"
+@using RecipesBlazorApp.Shared.Dtos.InfoDish;
+@using RecipesBlazorApp.Client;
+@using Syncfusion.Blazor.RichTextEditor
+@using RecipesBlazorApp.Shared.Dtos;
+
+
+<h3>Редагування інформації рецепту</h3>
+<hr />
+
+@if (InfoDish is not null)
+{
+    <div class="row">
+        <EditForm Model="@InfoDish" OnValidSubmit="@OnValidSubmit" class="col-md-8" OnInvalidSubmit="@OnInvalidSubmit">
+            <div class="row">
+                <div class="col-md-8">
+                    <DataAnnotationsValidator />
+                    <SfTextBox @bind-Value="@InfoDish.Title" FloatLabelType="FloatLabelType.Auto" Placeholder="Назва рецепту *"></SfTextBox>
+                    <ValidationMessage For="@(() => InfoDish.Title)" class="badge bg-danger" />
+
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <DataAnnotationsValidator />
+                        <SfTextBox @bind-Value="@InfoDish.IconPath" FloatLabelType="FloatLabelType.Auto" Placeholder="Фото *"></SfTextBox>
+                            <ValidationMessage For="@(() => InfoDish.IconPath)" class="badge bg-danger" />
+
+                    </div>
+                </div>
+                     <div class="mb-3">
+                             <h7>Час приготування</h7>
+                        <label asp-for="CookingTimes" class="form-label"></label>
+                            <select class="form-select" size="3" id="cookingTimes" name="cookingTimes">
+                    @foreach (var c in cookingTimes)
+                    {
+                                    <option value="@c.Name">@c.Name</option>
+                    }
+                    </select>
+                </div>
+                    <div class="mb-3">
+                            <h7>Складність</h7>
+                                <label asp-for="Difficulties" class="form-label"></label>
+                                        <select class="form-select" size="3" id="difficulties" name="difficulties">
+                    @foreach (var c in difficulties)
+                    {
+                                            <option value="@c.Name">@c.Name</option>
+                    }
+                        </select>
+                    </div>
+
+                         <div class="row">
+                            <div class="col-md-8">
+                                <DataAnnotationsValidator />
+                                <SfTextBox @bind-Value="@InfoDish.Ingredients1" FloatLabelType="FloatLabelType.Auto" Placeholder="Інгридієнти *"></SfTextBox>
+                                            <ValidationMessage For="@(() => InfoDish.Ingredients1)" class="badge bg-danger" />
+
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <DataAnnotationsValidator />
+                                    <SfTextBox @bind-Value="@InfoDish.Preparation1" FloatLabelType="FloatLabelType.Auto" Placeholder="Приготування *"></SfTextBox>
+                                                    <ValidationMessage For="@(() => InfoDish.Preparation1)" class="badge bg-danger" />
+
+                                </div>
+                            </div>
+                                <div class="mb-3">
+                    <label asp-for="Categories" class="form-label"></label>
+                    <select class="form-select" size="3" id="categories" name="categories">
+                    @foreach (var c in categories)
+                    {
+                                    <option value="@c.NameCategory">@c.NameCategory</option>
+                    }
+                    </select>
+                </div>
+           
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <SfButton type="submit" CssClass="btn-block" IsPrimary="true">Зберегти</SfButton>
+                </div>
+            </div>
+        </EditForm>
+    </div>
+}
+
+<SfToast ID="toast_type" @ref=sfToast ShowCloseButton="true" ShowProgressBar="true">
+    <ToastPosition X="Right" Y="Top"></ToastPosition>
+</SfToast>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private InfoDishDto? InfoDish { get; set; } = new InfoDishDto();
+
+    SfToast sfToast;
+
+    protected override async Task OnParametersSetAsync()
+    {
+       //InfoDish = await requestService.GetRequestForEditAsync(Id);
+    }
+
+    async Task OnValidSubmit()
+    {
+        //await requestService.UpdateAsync(Request);
+
+        await sfToast.ShowAsync(new ToastModel
+            {
+                Title = "Ура!",
+                Content = $"Дані збережено!",
+                CssClass = "e-toast-success",
+                Icon = "e-success toast-icons"
+            });
+
+        StateHasChanged();
+    }
+
+    async Task OnInvalidSubmit()
+    {
+        await sfToast.ShowAsync(new ToastModel
+            {
+                Title = ":( Сумно",
+                Content = $"Знайдено помилки у даних, виправте їх та зберержіть результат",
+                CssClass = "e-toast-error",
+                Icon = "e-error toast-icons"
+            });
+    }
+
+    async Task OnPhotoUploaded()
+    {
+        await sfToast.ShowAsync(new ToastModel
+            {
+                Title = "Фото",
+                Content = $"Фото успішно завантажено на сервер.",
+                CssClass = "e-toast-success",
+                Icon = "e-success toast-icons"
+            });
+    }
+    static List<Categories> categories = new List<Categories>
+    {
+        new Categories { Id = 1, NameCategory = "Перші страви"},
+        new Categories { Id = 2, NameCategory = "Другі страви"},
+        new Categories { Id = 3, NameCategory = "Десерти"}
+    };
+    static List<Difficalty> difficulties = new List<Difficalty>
+    {
+        new Difficalty { Id = 1, Name = "Легке приготування"},
+        new Difficalty { Id = 2, Name = "Важке приготування"},
+    };
+    static List<CookingTime> cookingTimes = new List<CookingTime>
+    {
+        new CookingTime { Id = 1, Name = "1 година"},
+        new CookingTime { Id = 2, Name = "2 години"},
+        new CookingTime { Id = 2, Name = "1.5 години"},
+        new CookingTime { Id = 2, Name = "30 хвилин"},
+    };
+
+
+}

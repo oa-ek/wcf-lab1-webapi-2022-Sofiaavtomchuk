@@ -9,6 +9,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using RecipesBlazorApp.Shared.Dtos.InfoDish;
 
 namespace Recipes.Repos
 {
@@ -37,6 +38,30 @@ namespace Recipes.Repos
         {
             var infoDishList = _ctx.InfoDishes.Include(x => x.Categories).ToList();
             return infoDishList;
+        }
+        public List<InfoDishDto> GetInfoDishesDto()
+        {
+           
+            var infoDishList = _ctx.InfoDishes.Include(x => x.Categories).ToList();
+            var infoDishListDto = new List<InfoDishDto>();
+            foreach (var infoDish in infoDishList)
+            {
+                infoDishListDto.Add(new InfoDishDto
+                {
+                    Id = infoDish.Id,
+                    Title = infoDish.Title,
+                    IconPath = infoDish.IconPath,
+                    Difficulty = infoDish.Difficulty,
+                    CookingTime = infoDish.CookingTime,
+                    Ingredients1 = infoDish.Ingredients1,
+                    Ingredients2 = infoDish.Ingredients2,
+                    Ingredients3 = infoDish.Ingredients3,
+                    Preparation1 = infoDish.Preparation1,
+                    Preparation2 = infoDish.Preparation2, 
+                    Categories = infoDish.Categories.NameCategory
+                });
+            }
+            return infoDishListDto;
         }
 
         public async Task DeleteInfoDishAsync(int id)

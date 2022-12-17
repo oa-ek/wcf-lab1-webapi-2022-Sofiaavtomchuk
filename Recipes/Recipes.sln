@@ -9,11 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Core", "Recipes.Cor
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Recipes.Repos", "Recipes.Repos\Recipes.Repos.csproj", "{CAADFE38-91D4-427E-B7C7-AD4D0796BE47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesBlazorApp.Server", "RecipesBlazorApp\Server\RecipesBlazorApp.Server.csproj", "{093B79BF-4AEA-44E0-8152-3E5612496157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesBlazorApp.Server", "RecipesBlazorApp\Server\RecipesBlazorApp.Server.csproj", "{093B79BF-4AEA-44E0-8152-3E5612496157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesBlazorApp.Client", "RecipesBlazorApp\Client\RecipesBlazorApp.Client.csproj", "{63B265AF-A6C6-4228-82AF-B0F45BCFC9E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesBlazorApp.Client", "RecipesBlazorApp\Client\RecipesBlazorApp.Client.csproj", "{63B265AF-A6C6-4228-82AF-B0F45BCFC9E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipesBlazorApp.Shared", "RecipesBlazorApp\Shared\RecipesBlazorApp.Shared.csproj", "{F1566FE8-5BFF-4D2B-B88A-698880DFF965}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecipesBlazorApp.Shared", "RecipesBlazorApp\Shared\RecipesBlazorApp.Shared.csproj", "{F1566FE8-5BFF-4D2B-B88A-698880DFF965}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "client", "client", "{5C8FD867-3B19-4206-A698-C41012C69860}"
 EndProject

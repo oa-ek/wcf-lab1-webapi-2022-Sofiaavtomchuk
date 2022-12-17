@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Recipes.Core\Recipes.Core.csproj" />
+    <ProjectReference Include="..\RecipesBlazorApp\Shared\RecipesBlazorApp.Shared.csproj" />
   </ItemGroup>
 
 </Project>

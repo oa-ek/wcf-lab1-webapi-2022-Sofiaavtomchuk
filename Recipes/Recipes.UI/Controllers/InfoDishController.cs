@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 using System.Diagnostics;
 using System;
 
-namespace Recipes.UI.Controllers
+/*namespace Recipes.UI.Controllers
 {
     public class InfoDishController : Controller
     {
@@ -141,4 +141,4 @@ namespace Recipes.UI.Controllers
         }
 
     }
-}
+}*/
